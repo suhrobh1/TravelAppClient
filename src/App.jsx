@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 
 function App() {
   const [city, setCity] = useState('');
-  const [datesInput, setDatesInput] = useState('');
+  const [fromDate, setFromDate] = useState('');
+  const [toDate, setToDate] = useState('');
   const [responseMessage, setResponseMessage] = useState('');
   const [forecastData, setForecastData] = useState('');
   const [error, setError] = useState('');
@@ -11,8 +12,12 @@ function App() {
     setCity(event.target.value);
   };
 
-  const handleDatesChange = (event) => {
-    setDatesInput(event.target.value);
+  const handleFromDateChange = (event) => {
+    setFromDate(event.target.value);
+  };
+
+  const handleToDateChange = (event) => {
+    setToDate(event.target.value);
   };
 
   const handleSubmit = async (event) => {
@@ -21,19 +26,18 @@ function App() {
     setForecastData('');
     setError('');
 
-    // Split the dates input by commas or newlines to create an array
-    const datesArray = datesInput
-      .split(/[\n,]+/)
-      .map((date) => date.trim())
-      .filter((date) => date !== ''); // Remove empty strings
-
     if (!city) {
       setError('Please enter a city name.');
       return;
     }
 
-    if (!datesArray.length) {
-      setError('Please enter at least one date.');
+    if (!fromDate) {
+      setError('Please select a "from" date.');
+      return;
+    }
+
+    if (!toDate) {
+      setError('Please select a "to" date.');
       return;
     }
 
@@ -43,7 +47,7 @@ function App() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ city, dates: datesArray }),
+        body: JSON.stringify({ city, fromDate, toDate }),
       });
 
       if (!response.ok) {
@@ -74,12 +78,21 @@ function App() {
           />
         </div>
         <div>
-          <label htmlFor="dates">Dates (comma-separated or one per line):</label>
-          <textarea
-            id="dates"
-            value={datesInput}
-            onChange={handleDatesChange}
-            rows="3" // Adjust as needed
+          <label htmlFor="fromDate">From Date:</label>
+          <input
+            type="date"
+            id="fromDate"
+            value={fromDate}
+            onChange={handleFromDateChange}
+          />
+        </div>
+        <div>
+          <label htmlFor="toDate">To Date:</label>
+          <input
+            type="date"
+            id="toDate"
+            value={toDate}
+            onChange={handleToDateChange}
           />
         </div>
         <button type="submit">Get Forecast</button>
