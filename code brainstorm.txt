@@ -1,0 +1,42 @@
+const express = require('express');
+const axios = require('axios'); // For making HTTP requests
+const app = express();
+const PORT = process.env.PORT || 3000;
+
+app.get('/api/data', async (req, res) => {
+  const city = req.query.city;
+
+  // Define the URLs for the microservices
+  const weatherServiceUrl = `http://weather-service/api?city=${city}`;
+  const hotelsServiceUrl = `http://hotels-service/api?city=${city}`;
+  const restaurantsServiceUrl = `http://restaurants-service/api?city=${city}`;
+  const currencyServiceUrl = `http://currency-service/api?city=${city}`;
+
+  try {
+    // Use Promise.all to call all services concurrently
+    const [weatherResponse, hotelsResponse, restaurantsResponse, currencyResponse] = await Promise.all([
+      axios.get(weatherServiceUrl),
+      axios.get(hotelsServiceUrl),
+      axios.get(restaurantsServiceUrl),
+      axios.get(currencyServiceUrl),
+    ]);
+
+    // Combine the responses
+    const combinedData = {
+      weather: weatherResponse.data,
+      hotels: hotelsResponse.data,
+      restaurants: restaurantsResponse.data,
+      currency: currencyResponse.data,
+    };
+
+    // Send the combined data back to the client
+    res.json(combinedData);
+  } catch (error) {
+    console.error('Error fetching data from microservices:', error);
+    res.status(500).json({ error: 'Failed to fetch data' });
+  }
+});
+
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
+});
