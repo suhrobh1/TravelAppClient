@@ -62,7 +62,7 @@ function TravelForm({ onDataFetch }) {
       const data = await response.json();
 
       onDataFetch(data);
-      setResponseMessage(data.message);
+      // setResponseMessage(data.message);
     } catch (err) {
       console.error("Error sending data to backend:", err);
       setError("Failed to send data to the server.");
