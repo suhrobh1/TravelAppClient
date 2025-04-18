@@ -3,7 +3,7 @@ import { Routes, Route } from "react-router";
 
 function Weather({ data }) {
   // const { temperature, description, icon } = data;
-  const { forecastData } = data;
+  // const { forecastData } = data;
   console.log("in Weather: data", data);
   console.log("in Weather: forecastData", forecastData);
   // const [responseMessage, setResponseMessage] = useState("");
