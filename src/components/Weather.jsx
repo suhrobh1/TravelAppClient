@@ -11,7 +11,7 @@ function Weather({ data }) {
   return (
     <div>
       <h1>Weather Forecast for {city}</h1>
-      {forecastData && <p>Forecast: {forecastData}</p>}
+      {forecast && <p>Forecast: {forecast}</p>}
     </div>
   );
 }
