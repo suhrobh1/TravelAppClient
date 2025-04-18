@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { Routes, Route } from "react-router";
 import "./App.css";
-import HomePage from "./components/HomePage";
+import Home from "./pages/Home";
+
 // function App() {
 //   const [city, setCity] = useState('');
 //   const [fromDate, setFromDate] = useState('');
@@ -114,7 +115,7 @@ function App() {
     <>
       <Navbar />
       <Routes>
-        <Route path="/" element={<HomePage />} />
+        <Route path="/" element={<Home />} />
       </Routes>
     </>
   );
