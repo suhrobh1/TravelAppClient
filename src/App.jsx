@@ -17,7 +17,7 @@ function App() {
     setError('');
 
     try {
-      const response = await fetch('http://localhost:3001/api/get-forecast', { // Use the server's URL
+      const response = await fetch('https://travelappclient-production.up.railway.app/', { // Use the server's URL
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
