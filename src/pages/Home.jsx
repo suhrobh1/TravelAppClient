@@ -116,7 +116,7 @@ function Home() {
 
   const handleDataFetch = (data) => {
     setCombinedData(data);
-    console.log(data);
+    console.log("in Home: data", data);
   };
 
   return (
@@ -126,7 +126,7 @@ function Home() {
         <TravelForm onDataFetch={handleDataFetch} />
         {combinedData && (
           <div>
-            <Weather data={combinedData.weather} />
+            <Weather data={combinedData} />
             {/* <Currency data={combinedData.currency} />
           <Hotels data={combinedData.hotels} />
           <Places data={combinedData.places} /> */}
