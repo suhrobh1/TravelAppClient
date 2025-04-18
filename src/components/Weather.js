@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Routes, Route } from "react-router";
 import "./App.css";
-import Home from "./pages/Home";
 
 function Weather(}{data}) {
 

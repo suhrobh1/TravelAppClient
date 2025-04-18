@@ -109,6 +109,7 @@
 
 import React, { useState } from "react";
 import TravelForm from "../components/TravelForm";
+import Weather from "../components/Weather";
 
 function Home() {
   const [combinedData, setCombinedData] = useState(null);
@@ -125,7 +126,10 @@ function Home() {
         <TravelForm onDataFetch={handleDataFetch} />
         {combinedData && (
           <div>
-            <Weather data={combinedData.weather} responseMessage = {data.message} />
+            <Weather
+              data={combinedData.weather}
+              responseMessage={data.message}
+            />
             {/* <Currency data={combinedData.currency} />
           <Hotels data={combinedData.hotels} />
           <Places data={combinedData.places} /> */}
