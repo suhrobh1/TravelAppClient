@@ -60,7 +60,7 @@ function TravelForm({ onDataFetch }) {
       }
 
       const data = await response.json();
-
+      console.log("in TravelForm: data", data);
       onDataFetch(data);
       // setResponseMessage(data.message);
     } catch (err) {

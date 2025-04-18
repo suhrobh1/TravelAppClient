@@ -5,7 +5,7 @@ function Weather({ data }) {
   // const { temperature, description, icon } = data;
   // const { forecastData } = data;
   console.log("in Weather: data", data);
-  console.log("in Weather: forecastData", forecastData);
+  // console.log("in Weather: forecastData", forecastData);
   // const [responseMessage, setResponseMessage] = useState("");
 
   return (
