@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Routes, Route } from "react-router";
-import "./App.css";
 
 function Weather({ data }) {
   // const { temperature, description, icon } = data;
