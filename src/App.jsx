@@ -42,7 +42,7 @@ function App() {
     }
 
     try {
-      const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/get-forecast`, {
+      const response = await fetch(`https://travelappserver-production.up.railway.app/api/get-forecast`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
