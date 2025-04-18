@@ -2,12 +2,17 @@ import React, { useState } from 'react';
 
 function App() {
   const [city, setCity] = useState('');
+  const [datesInput, setDatesInput] = useState('');
   const [responseMessage, setResponseMessage] = useState('');
   const [forecastData, setForecastData] = useState('');
   const [error, setError] = useState('');
 
-  const handleInputChange = (event) => {
+  const handleCityChange = (event) => {
     setCity(event.target.value);
+  };
+
+  const handleDatesChange = (event) => {
+    setDatesInput(event.target.value);
   };
 
   const handleSubmit = async (event) => {
@@ -16,13 +21,29 @@ function App() {
     setForecastData('');
     setError('');
 
+    // Split the dates input by commas or newlines to create an array
+    const datesArray = datesInput
+      .split(/[\n,]+/)
+      .map((date) => date.trim())
+      .filter((date) => date !== ''); // Remove empty strings
+
+    if (!city) {
+      setError('Please enter a city name.');
+      return;
+    }
+
+    if (!datesArray.length) {
+      setError('Please enter at least one date.');
+      return;
+    }
+
     try {
-      const response = await fetch('https://travelappserver-production.up.railway.app/api/get-forecast', { // Use the server's URL
+      const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/get-forecast`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ city }),
+        body: JSON.stringify({ city, dates: datesArray }),
       });
 
       if (!response.ok) {
@@ -34,8 +55,8 @@ function App() {
       setResponseMessage(data.message);
       setForecastData(data.forecast);
     } catch (err) {
-      console.error('Error sending city to backend:', err);
-      setError('Failed to send city to the server.');
+      console.error('Error sending data to backend:', err);
+      setError('Failed to send data to the server.');
     }
   };
 
@@ -49,7 +70,16 @@ function App() {
             type="text"
             id="city"
             value={city}
-            onChange={handleInputChange}
+            onChange={handleCityChange}
+          />
+        </div>
+        <div>
+          <label htmlFor="dates">Dates (comma-separated or one per line):</label>
+          <textarea
+            id="dates"
+            value={datesInput}
+            onChange={handleDatesChange}
+            rows="3" // Adjust as needed
           />
         </div>
         <button type="submit">Get Forecast</button>
