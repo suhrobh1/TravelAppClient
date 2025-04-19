@@ -10,8 +10,8 @@ function Weather({ data }) {
 
   return (
     <div>
-      <h1>Weather Forecast for {city}</h1>
-      {forecast && <p>Forecast: {forecast}</p>}
+      <h3>Weather Forecast for {city}</h3>
+      {microserviceData.forecast && <p>Forecast: {microserviceData.forecast}</p>}
     </div>
   );
 }
