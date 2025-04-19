@@ -70,39 +70,75 @@ function TravelForm({ onDataFetch }) {
   };
 
   return (
-    <div>
-      <h1>Get Forecast</h1>
+    <div style={{ maxWidth: '700px', margin: '0 auto', fontFamily: 'Arial, sans-serif' }}>
+      <h2 style={{ textAlign: 'center', marginBottom: '20px' }}>Get forecast for the trip. </h2>
       <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="city">City Name:</label>
-          <input
-            type="text"
-            id="city"
-            value={city}
-            onChange={handleCityChange}
-          />
+        <div
+          style={{
+            display: 'flex',
+            flexWrap: 'wrap',
+            gap: '15px',
+            justifyContent: 'space-between',
+            marginBottom: '20px'
+          }}
+        >
+          <div style={{ flex: '1' }}>
+            <label htmlFor="city" style={{ display: 'block', marginBottom: '5px', fontWeight: 'bold' }}>
+              City Name:
+            </label>
+            <input
+              type="text"
+              id="city"
+              value={city}
+              onChange={handleCityChange}
+              style={{ width: '100%', padding: '8px', border: '1px solid #ccc', borderRadius: '4px' }}
+            />
+          </div>
+          <div style={{ flex: '1' }}>
+            <label htmlFor="fromDate" style={{ display: 'block', marginBottom: '5px', fontWeight: 'bold' }}>
+              From Date:
+            </label>
+            <input
+              type="date"
+              id="fromDate"
+              value={fromDate}
+              onChange={handleFromDateChange}
+              style={{ width: '100%', padding: '8px', border: '1px solid #ccc', borderRadius: '4px' }}
+            />
+          </div>
+          <div style={{ flex: '1' }}>
+            <label htmlFor="toDate" style={{ display: 'block', marginBottom: '5px', fontWeight: 'bold' }}>
+              To Date:
+            </label>
+            <input
+              type="date"
+              id="toDate"
+              value={toDate}
+              onChange={handleToDateChange}
+              style={{ width: '100%', padding: '8px', border: '1px solid #ccc', borderRadius: '4px' }}
+            />
+          </div>
         </div>
-        <div>
-          <label htmlFor="fromDate">From Date:</label>
-          <input
-            type="date"
-            id="fromDate"
-            value={fromDate}
-            onChange={handleFromDateChange}
-          />
+        <div style={{ textAlign: 'center' }}>
+          <button
+            type="submit"
+            style={{
+              padding: '10px 20px',
+              backgroundColor: '#007BFF',
+              color: '#fff',
+              border: 'none',
+              borderRadius: '4px',
+              fontWeight: 'bold',
+              cursor: 'pointer',
+            }}
+          >
+            Get Forecast
+          </button>
         </div>
-        <div>
-          <label htmlFor="toDate">To Date:</label>
-          <input
-            type="date"
-            id="toDate"
-            value={toDate}
-            onChange={handleToDateChange}
-          />
-        </div>
-        <button type="submit">Get Forecast</button>
       </form>
     </div>
+
+
   );
 }
 
