@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Routes, Route } from "react-router";
 
 function Weather({ data }) {
-  const { message, forecast, city } = data;
+  const { message, microserviceData, city } = data;
 
   console.log("in Weather: data", data);
   // console.log("in Weather: forecastData", forecastData);
