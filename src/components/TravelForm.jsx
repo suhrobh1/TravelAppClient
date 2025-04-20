@@ -42,7 +42,7 @@ function TravelForm({ onDataFetch }) {
 
     try {
       const response = await fetch(
-        `https://travelappserver-production.up.railway.app/api/get-forecast`,
+        `https://travelappserver-production.up.railway.app/api/get-trip`,
         {
           method: "POST",
           headers: {
