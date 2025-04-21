@@ -9,7 +9,8 @@ function PointsInterest({ data }) {
 
   console.log("in PointsInterest: data", data);
   console.log("in PointsInterest: microserviceData", microserviceData);
-  // const [responseMessage, setResponseMessage] = useState("");
+  console.log("in PointsInterest: poiData", poiData);
+  console.log("in PointsInterest: poiData.places", poiData.places);
 
 
 

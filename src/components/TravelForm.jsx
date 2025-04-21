@@ -132,7 +132,7 @@ function TravelForm({ onDataFetch }) {
               cursor: 'pointer',
             }}
           >
-            Get Forecast
+            Get Trip Info
           </button>
         </div>
       </form>
