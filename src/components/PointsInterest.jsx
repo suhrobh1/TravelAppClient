@@ -4,7 +4,7 @@ import { Routes, Route } from "react-router";
 function PointsInterest({ data }) {
   const { message, microserviceData, city } = data;
 
-  const poiData = microserviceData.forecast;
+  const poiData = microserviceData.places;
 
 
   console.log("in PointsInterest: data", data);
