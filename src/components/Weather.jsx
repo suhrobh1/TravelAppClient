@@ -4,6 +4,8 @@ import { Routes, Route } from "react-router";
 function Weather({ data }) {
   const { message, microserviceData, city } = data;
 
+  const weatherForecastData = microserviceData.forecast;
+
   console.log("in Weather, ln 7: data", data);
   console.log("in Weather, ln 8: microserviceData", microserviceData);
   // const [responseMessage, setResponseMessage] = useState("");
@@ -32,7 +34,7 @@ function Weather({ data }) {
         </tr>
       </thead>
       <tbody>
-        {microserviceData.forecast.map((day, index) => (
+        {weatherForecastData.forecast.map((day, index) => (
           <tr key={index} style={{ backgroundColor: index % 2 === 0 ? '#ffffff' : '#f9f9f9' }}>
             <td style={{ border: '1px solid #ddd', padding: '8px' }}>{day.time}</td>
             <td style={{ border: '1px solid #ddd', padding: '8px' }}>
