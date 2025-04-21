@@ -7,6 +7,9 @@ function TravelForm({ onDataFetch }) {
   const [responseMessage, setResponseMessage] = useState("");
   const [forecastData, setForecastData] = useState("");
   const [error, setError] = useState("");
+  const [durationError, setDurationError] = useState(false);    
+
+
 
   const handleCityChange = (event) => {
     setCity(event.target.value);
@@ -17,7 +20,30 @@ function TravelForm({ onDataFetch }) {
   };
 
   const handleToDateChange = (event) => {
-    setToDate(event.target.value);
+    console.log ("in TravelForm, from date", fromDate);
+    console.log("in TraveForm, to date", event.target.value);
+
+    // Create Date objects from the date strings
+    const date2 = new Date(fromDate);
+    const date1 = new Date(event.target.value);
+
+    // Calculate the difference in milliseconds
+    const differenceInMilliseconds = date1.getTime() - date2.getTime();
+
+    // Convert milliseconds to days
+    const millisecondsInDay = 1000 * 60 * 60 * 24;
+    const differenceInDays = differenceInMilliseconds / millisecondsInDay;
+    console.log("in TraveForm, to date difference", differenceInDays);
+
+    if (differenceInDays > 7) {
+      setDurationError(true);
+      console.log("Error in toDate")
+    }else{
+      setToDate(event.target.value);
+      setDurationError(false);
+      
+    }
+    
   };
 
   const handleSubmit = async (event) => {
@@ -117,6 +143,7 @@ function TravelForm({ onDataFetch }) {
               onChange={handleToDateChange}
               style={{ width: '100%', padding: '8px', border: '1px solid #ccc', borderRadius: '4px' }}
             />
+            {durationError ? <span> "Please select only 7 days" </span> : <span> </span>}
           </div>
         </div>
         <div style={{ textAlign: 'center' }}>

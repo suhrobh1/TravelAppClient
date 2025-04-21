@@ -34,20 +34,20 @@ function Weather({ data }) {
         </tr>
       </thead>
       <tbody>
-        {weatherForecastData.forecast.map((day, index) => (
-          <tr key={index} style={{ backgroundColor: index % 2 === 0 ? '#ffffff' : '#f9f9f9' }}>
-            <td style={{ border: '1px solid #ddd', padding: '8px' }}>{day.time}</td>
-            <td style={{ border: '1px solid #ddd', padding: '8px' }}>
-              {day.minTemperature}°F - {day.maxTemperature}°F
-            </td>
-            <td style={{ border: '1px solid #ddd', padding: '8px' }}>
-              {day.precipitationProbability}{day.precipitationProbabilityUnit}
-            </td>
-            <td style={{ border: '1px solid #ddd', padding: '8px' }}>
-              {skyStatus(day.cloudCover)}
-            </td>
-          </tr>
-        ))}
+      {weatherForecastData.forecast.slice(0, 7).map((day, index) => (
+        <tr key={index} style={{ backgroundColor: index % 2 === 0 ? '#ffffff' : '#f9f9f9' }}>
+          <td style={{ border: '1px solid #ddd', padding: '8px' }}>{day.time}</td>
+          <td style={{ border: '1px solid #ddd', padding: '8px' }}>
+            {day.minTemperature}°F - {day.maxTemperature}°F
+          </td>
+          <td style={{ border: '1px solid #ddd', padding: '8px' }}>
+            {day.precipitationProbability}{day.precipitationProbabilityUnit}
+          </td>
+          <td style={{ border: '1px solid #ddd', padding: '8px' }}>
+            {skyStatus(day.cloudCover)}
+          </td>
+        </tr>
+      ))}
       </tbody>
     </table>
   </div>

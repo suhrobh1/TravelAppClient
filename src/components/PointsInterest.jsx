@@ -7,16 +7,16 @@ function PointsInterest({ data }) {
   const poiData = microserviceData.places;
 
 
-  console.log("in PointsInterest: data", data);
-  console.log("in PointsInterest: microserviceData", microserviceData);
-  console.log("in PointsInterest: poiData", poiData);
-  console.log("in PointsInterest: poiData.places", poiData.places);
+//   console.log("in PointsInterest: data", data);
+//   console.log("in PointsInterest: microserviceData", microserviceData);
+//   console.log("in PointsInterest: poiData", poiData);
+//   console.log("in PointsInterest: poiData.places", poiData.places);
 
 
 
   return (
     <div>
-    <h3 style={{ fontFamily: 'Arial, sans-serif' }}>Points Interest near {city}</h3>
+    <h3 style={{ fontFamily: 'Arial, sans-serif' }}>Points of interest near {city}</h3>
     <table style={{ borderCollapse: 'collapse', width: '100%', fontFamily: 'Arial, sans-serif' }}>
       <thead>
         <tr>
@@ -26,7 +26,7 @@ function PointsInterest({ data }) {
         </tr>
       </thead>
       <tbody>
-      {poiData.places.map((place, index) => (
+      {poiData.places.slice(0, 7).map((place, index) => (
           <tr key={index} style={{ backgroundColor: index % 2 === 0 ? '#ffffff' : '#f9f9f9' }}>
             <td style={{ border: '1px solid #ddd', padding: '8px' }}>
                {place.name}
