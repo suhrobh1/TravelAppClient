@@ -4,8 +4,8 @@ import { Routes, Route } from "react-router";
 function Weather({ data }) {
   const { message, microserviceData, city } = data;
 
-  console.log("in Weather: data", data);
-  // console.log("in Weather: forecastData", forecastData);
+  console.log("in Weather, ln 7: data", data);
+  console.log("in Weather, ln 8: microserviceData", microserviceData);
   // const [responseMessage, setResponseMessage] = useState("");
 
   const skyStatus = (amount) =>{

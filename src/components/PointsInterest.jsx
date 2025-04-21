@@ -5,7 +5,7 @@ function PointsInterest({ data }) {
   const { message, microserviceData, city } = data;
 
   console.log("in PointsInterest: data", data);
-  // console.log("in PointsInterest: forecastData", forecastData);
+  console.log("in PointsInterest: microserviceData", microserviceData);
   // const [responseMessage, setResponseMessage] = useState("");
 
 
