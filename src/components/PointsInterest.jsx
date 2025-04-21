@@ -26,17 +26,17 @@ function PointsInterest({ data }) {
         </tr>
       </thead>
       <tbody>
-      {poiData.places.map((day, index) => (
+      {poiData.places.map((place, index) => (
           <tr key={index} style={{ backgroundColor: index % 2 === 0 ? '#ffffff' : '#f9f9f9' }}>
-            <td style={{ border: '1px solid #ddd', padding: '8px' }}>{day.time}</td>
+            <td style={{ border: '1px solid #ddd', padding: '8px' }}>{place.lat}</td>
             <td style={{ border: '1px solid #ddd', padding: '8px' }}>
-              {day.minTemperature}°F - {day.maxTemperature}°F
+               {place.name}
             </td>
             <td style={{ border: '1px solid #ddd', padding: '8px' }}>
-              {day.precipitationProbability}{day.precipitationProbabilityUnit}
+              {place.category}
             </td>
             <td style={{ border: '1px solid #ddd', padding: '8px' }}>
-              {skyStatus(day.cloudCover)}
+              {place.address}
             </td>
           </tr>
         ))}
