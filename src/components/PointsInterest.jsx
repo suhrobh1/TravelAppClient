@@ -28,7 +28,6 @@ function PointsInterest({ data }) {
       <tbody>
       {poiData.places.map((place, index) => (
           <tr key={index} style={{ backgroundColor: index % 2 === 0 ? '#ffffff' : '#f9f9f9' }}>
-            <td style={{ border: '1px solid #ddd', padding: '8px' }}>{place.lat}</td>
             <td style={{ border: '1px solid #ddd', padding: '8px' }}>
                {place.name}
             </td>
