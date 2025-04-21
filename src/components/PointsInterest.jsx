@@ -32,7 +32,7 @@ function PointsInterest({ data }) {
                {place.name}
             </td>
             <td style={{ border: '1px solid #ddd', padding: '8px' }}>
-              {place.category}
+              {place.categories[0]}
             </td>
             <td style={{ border: '1px solid #ddd', padding: '8px' }}>
               {place.address}

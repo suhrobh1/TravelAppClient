@@ -71,7 +71,7 @@ function TravelForm({ onDataFetch }) {
 
   return (
     <div style={{ maxWidth: '700px', margin: '0 auto', fontFamily: 'Arial, sans-serif' }}>
-      <h2 style={{ textAlign: 'center', marginBottom: '20px' }}>Get forecast for the trip. </h2>
+      <h2 style={{ textAlign: 'center', marginBottom: '20px' }}>Get plans for the trip. </h2>
       <form onSubmit={handleSubmit}>
         <div
           style={{
