@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function TravelForm({ onDataFetch }) {
+function TravelForm({ onDataFetch, submitted, setSubmitted }) {
   const [city, setCity] = useState("");
   const [fromDate, setFromDate] = useState("");
   const [toDate, setToDate] = useState("");
@@ -61,7 +61,8 @@ function TravelForm({ onDataFetch }) {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
+    onDataFetch("")
+    setSubmitted(true);
     setError("");
 
     // if (!city ) {

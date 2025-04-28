@@ -1,56 +1,68 @@
 import React, { useState } from "react";
-import { Routes, Route } from "react-router";
 
 function Weather({ data }) {
-  const { message, microserviceData, city } = data;
-
+  const { microserviceData, city } = data;
   const weatherForecastData = microserviceData.forecast;
+  const [moreInfo, setMoreInfo] = useState(true);
 
-  console.log("in Weather, ln 7: data", data);
-  console.log("in Weather, ln 8: microserviceData", microserviceData);
-  // const [responseMessage, setResponseMessage] = useState("");
-
-  const skyStatus = (amount) =>{
-    if (amount > 70){
+  const skyStatus = (amount) => {
+    if (amount > 70) {
       return "Sunshine";
-    }else if(amount < 30){
-      return "Cloudy"
-    }else {
-      return "Fair"
+    } else if (amount < 30) {
+      return "Cloudy";
+    } else {
+      return "Fair";
     }
-  }
-
+  };
 
   return (
     <div>
-    <h3 style={{ fontFamily: 'Arial, sans-serif' }}>Weather Forecast for {city}</h3>
-    <table style={{ borderCollapse: 'collapse', width: '100%', fontFamily: 'Arial, sans-serif' }}>
-      <thead>
-        <tr>
-          <th style={{ border: '1px solid #ddd', padding: '8px', backgroundColor: '#f2f2f2' }}>Date</th>
-          <th style={{ border: '1px solid #ddd', padding: '8px', backgroundColor: '#f2f2f2' }}>Temperature (Min - Max)</th>
-          <th style={{ border: '1px solid #ddd', padding: '8px', backgroundColor: '#f2f2f2' }}>Precipitation %</th>
-          <th style={{ border: '1px solid #ddd', padding: '8px', backgroundColor: '#f2f2f2' }}>Cloud Cover</th>
-        </tr>
-      </thead>
-      <tbody>
-      {weatherForecastData.forecast.slice(0, 7).map((day, index) => (
-        <tr key={index} style={{ backgroundColor: index % 2 === 0 ? '#ffffff' : '#f9f9f9' }}>
-          <td style={{ border: '1px solid #ddd', padding: '8px' }}>{day.time}</td>
-          <td style={{ border: '1px solid #ddd', padding: '8px' }}>
-            {day.minTemperature}°F - {day.maxTemperature}°F
-          </td>
-          <td style={{ border: '1px solid #ddd', padding: '8px' }}>
-            {day.precipitationProbability}{day.precipitationProbabilityUnit}
-          </td>
-          <td style={{ border: '1px solid #ddd', padding: '8px' }}>
-            {skyStatus(day.cloudCover)}
-          </td>
-        </tr>
-      ))}
-      </tbody>
-    </table>
-  </div>
+      <h3 style={{ fontFamily: 'Arial, sans-serif' }}>Weather Forecast for {city}</h3>
+      <table style={{ borderCollapse: 'collapse', width: '100%', fontFamily: 'Arial, sans-serif', textAlign: 'center' }}>
+        <thead>
+          <tr>
+            {weatherForecastData.forecast.slice(0, 7).map((day, index) => (
+              <th key={index} style={{ border: '1px solid #ddd', padding: '8px', backgroundColor: '#f2f2f2' }}>
+                {day.time}
+              </th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            {weatherForecastData.forecast.slice(0, 7).map((day, index) => (
+              <td key={index} style={{ border: '1px solid #ddd', padding: '8px' }}>
+                <div><strong>Temp:</strong> {day.minTemperature}°F - {day.maxTemperature}°F</div>
+                {moreInfo && (
+                  <div>
+                    <div><strong>Precip:</strong> {day.precipitationProbability}{day.precipitationProbabilityUnit}</div>
+                    <div><strong>Sky:</strong> {skyStatus(day.cloudCover)}</div>
+                  </div>
+                )}
+              </td>
+            ))}
+          </tr>
+        </tbody>
+      </table>
+
+      {/* Button below the table, aligned to the right */}
+      <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: '10px' }}>
+        <button 
+          onClick={() => setMoreInfo(!moreInfo)} 
+          style={{ 
+            padding: '8px 16px', 
+            backgroundColor: '#4CAF50', 
+            color: 'white', 
+            border: 'none', 
+            borderRadius: '4px', 
+            cursor: 'pointer',
+            fontFamily: 'Arial, sans-serif'
+          }}
+        >
+          {moreInfo ? 'Hide More Info' : 'Show More Info'}
+        </button>
+      </div>
+    </div>
   );
 }
 
