@@ -84,8 +84,8 @@ function TravelForm({ onDataFetch }) {
     try {
       const response = await fetch(
 
-        `http://localhost:3001/api/get-trip`,
-        //`https://travelappserver-production.up.railway.app/api/get-trip`,
+        // `http://localhost:3001/api/get-trip`,
+        `https://travelappserver-production.up.railway.app/api/get-trip`,
         {
           method: "POST",
           headers: {
