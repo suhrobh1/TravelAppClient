@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import TravelForm from "../components/TravelForm";
 import Weather from "../components/Weather";
 import PointsInterest from "../components/PointsInterest";
+import Summary from "../components/Summary";
 
 function Home() {
   const [combinedData, setCombinedData] = useState(null);
@@ -21,6 +22,7 @@ function Home() {
           <div>
             <Weather data={combinedData} />
             <PointsInterest data = {combinedData}/>
+            <Summary data = {combinedData} />
             {/* <Currency data={combinedData.currency} />
           <Hotels data={combinedData.hotels} />
           <Places data={combinedData.places} /> */}

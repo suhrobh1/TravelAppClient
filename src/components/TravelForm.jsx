@@ -8,10 +8,23 @@ function TravelForm({ onDataFetch }) {
   const [forecastData, setForecastData] = useState("");
   const [error, setError] = useState("");
   const [durationError, setDurationError] = useState(false);    
+  const [latitude, setLatitude] = useState("");
+  const [longitude, setLongitude] = useState("");
 
 
+  const handleLatitudeChange = (event) => {
+    setCity("")
+    setLatitude(event.target.value);
+  };
+
+  const handleLongitudeChange = (event) => {
+    setCity("")
+    setLongitude(event.target.value);
+  };
 
   const handleCityChange = (event) => {
+    setLatitude("")
+    setLongitude("")
     setCity(event.target.value);
   };
 
@@ -51,10 +64,10 @@ function TravelForm({ onDataFetch }) {
 
     setError("");
 
-    if (!city) {
-      setError("Please enter a city name.");
-      return;
-    }
+    // if (!city ) {
+    //   setError("Please enter a city name.");
+    //   return;
+    // }
 
     if (!fromDate) {
       setError('Please select a "from" date.');
@@ -66,15 +79,19 @@ function TravelForm({ onDataFetch }) {
       return;
     }
 
+
+
     try {
       const response = await fetch(
-        `https://travelappserver-production.up.railway.app/api/get-trip`,
+
+        `http://localhost:3001/api/get-trip`,
+        //`https://travelappserver-production.up.railway.app/api/get-trip`,
         {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({ city, fromDate, toDate }),
+          body: JSON.stringify({ latitude, longitude, fromDate, toDate, city }),
         },
       );
 
@@ -120,6 +137,42 @@ function TravelForm({ onDataFetch }) {
               style={{ width: '100%', padding: '8px', border: '1px solid #ccc', borderRadius: '4px' }}
             />
           </div>
+
+          <div style={{ flex: '1' }}>
+           OR
+          </div>
+
+
+          <div style={{ flex: '1' }}>
+            <label htmlFor="latitude" style={{ display: 'block', marginBottom: '5px', fontWeight: 'bold' }}>
+              Latitude:
+            </label>
+            <input
+              type="text"
+              id="latitude"
+              value={latitude}
+              onChange={handleLatitudeChange}
+              style={{ width: '100%', padding: '8px', border: '1px solid #ccc', borderRadius: '4px' }}
+            />
+          </div>
+          <div style={{ flex: '1' }}>
+            <label htmlFor="longitude" style={{ display: 'block', marginBottom: '5px', fontWeight: 'bold' }}>
+              Longitude:
+            </label>
+            <input
+              type="text"
+              id="longitude"
+              value={longitude}
+              onChange={handleLongitudeChange}
+              style={{ width: '100%', padding: '8px', border: '1px solid #ccc', borderRadius: '4px' }}
+            />
+          </div>
+
+
+
+
+
+
           <div style={{ flex: '1' }}>
             <label htmlFor="fromDate" style={{ display: 'block', marginBottom: '5px', fontWeight: 'bold' }}>
               From Date:
