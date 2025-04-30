@@ -10,6 +10,8 @@ function TravelForm({ onDataFetch, submitted, setSubmitted }) {
   const [durationError, setDurationError] = useState(false);    
   const [latitude, setLatitude] = useState("");
   const [longitude, setLongitude] = useState("");
+  const [showTooltip, setShowTooltip] = useState(false);
+
 
 
   const handleLatitudeChange = (event) => {
@@ -114,7 +116,69 @@ function TravelForm({ onDataFetch, submitted, setSubmitted }) {
   };
 
   return (
-    <div style={{ maxWidth: '700px', margin: '0 auto', fontFamily: 'Arial, sans-serif' }}>
+    <div style={{ 
+      maxWidth: '700px', 
+      margin: '0 auto', 
+      fontFamily: 'Arial, sans-serif', 
+      position: 'relative' 
+    }}>
+    
+      <div 
+        style={{ 
+          position: 'absolute',
+          top: '10px',
+          right: '10px',
+          width: '30px',
+          height: '30px',
+          borderRadius: '50%',
+          backgroundColor: '#007BFF',
+          color: '#fff',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          fontStyle: 'italic',
+          fontWeight: 'bold',
+          cursor: 'pointer',
+          zIndex: 2
+        }}
+        onMouseEnter={() => setShowTooltip(true)}
+        onMouseLeave={() => setShowTooltip(false)}
+      >
+        i
+      </div>
+  
+      {showTooltip && (
+        <div style={{
+          position: 'absolute',
+          bottom: '10px',
+          right: '10px',
+          backgroundColor: '#333',
+          color: '#fff',
+          padding: '10px',
+          borderRadius: '10px',
+          maxWidth: '220px',
+          fontSize: '13px',
+          zIndex: 1,
+          textAlign: 'center',
+          boxShadow: '0px 2px 6px rgba(0,0,0,0.2)',
+          whiteSpace: 'normal',
+        }}>
+          Please enter city or latitude/longitude for the area. Enter the trip dates. Trip date must be for maximum of 7 days.
+         
+          <div style={{
+            content: '""',
+            position: 'absolute',
+            top: '-10px',
+            right: '10px',
+            width: 0,
+            height: 0,
+            borderLeft: '6px solid transparent',
+            borderRight: '6px solid transparent',
+            borderBottom: '10px solid #333',
+          }} />
+        </div>
+      )}
+  
       <h2 style={{ textAlign: 'center', marginBottom: '20px' }}>Get plans for the trip. </h2>
       <form onSubmit={handleSubmit}>
         <div
