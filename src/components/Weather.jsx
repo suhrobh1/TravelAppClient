@@ -3,7 +3,7 @@ import React, { useState } from "react";
 function Weather({ data }) {
   const { microserviceData, city } = data;
   const weatherForecastData = microserviceData.forecast;
-  const [moreInfo, setMoreInfo] = useState(true);
+  const [moreInfo, setMoreInfo] = useState(false);
 
   const skyStatus = (amount) => {
     if (amount > 70) {

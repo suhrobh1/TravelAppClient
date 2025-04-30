@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 
-function PointsInterest({ data }) {
+function Hotels({ data }) {
   const { message, microserviceData, city } = data;
-  const poiData = microserviceData.places;
+  const hotelData = microserviceData.hotels;
   const [moreInfo, setMoreInfo] = useState(false);
 
   return (
     <div>
-      <h3 style={{ fontFamily: 'Arial, sans-serif' }}>Points of Interest near {city}</h3>
+      <h3 style={{ fontFamily: 'Arial, sans-serif' }}>Hotels near {city}</h3>
       
       <table style={{ borderCollapse: 'collapse', width: '100%', fontFamily: 'Arial, sans-serif' }}>
         <thead>
@@ -15,23 +15,23 @@ function PointsInterest({ data }) {
             <th style={{ border: '1px solid #ddd', padding: '8px', backgroundColor: '#f2f2f2' }}>Name</th>
             {moreInfo && (
               <>
-                <th style={{ border: '1px solid #ddd', padding: '8px', backgroundColor: '#f2f2f2' }}>Category</th>
+                <th style={{ border: '1px solid #ddd', padding: '8px', backgroundColor: '#f2f2f2' }}>Distance (ft.)</th>
                 <th style={{ border: '1px solid #ddd', padding: '8px', backgroundColor: '#f2f2f2' }}>Address</th>
               </>
             )}
           </tr>
         </thead>
         <tbody>
-          {poiData.places.slice(0, 7).map((place, index) => (
+          {hotelData.places.slice(0, 7).map((hotel, index) => (
             <tr key={index} style={{ backgroundColor: index % 2 === 0 ? '#ffffff' : '#f9f9f9' }}>
-              <td style={{ border: '1px solid #ddd', padding: '8px' }}>{place.name}</td>
+              <td style={{ border: '1px solid #ddd', padding: '8px' }}>{hotel.name}</td>
               {moreInfo && (
                 <>
                   <td style={{ border: '1px solid #ddd', padding: '8px' }}>
-                    {place.categories[0]}
+                    {hotel.distance}
                   </td>
                   <td style={{ border: '1px solid #ddd', padding: '8px' }}>
-                    {place.address}
+                    {hotel.address}
                   </td>
                 </>
               )}
@@ -40,7 +40,6 @@ function PointsInterest({ data }) {
         </tbody>
       </table>
 
-      {/* Button below the table, aligned to the right */}
       <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: '10px' }}>
         <button
           onClick={() => setMoreInfo(!moreInfo)}
@@ -61,4 +60,4 @@ function PointsInterest({ data }) {
   );
 }
 
-export default PointsInterest;
+export default Hotels;

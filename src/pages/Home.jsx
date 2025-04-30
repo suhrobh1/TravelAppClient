@@ -3,6 +3,7 @@ import TravelForm from "../components/TravelForm";
 import Weather from "../components/Weather";
 import PointsInterest from "../components/PointsInterest";
 import Summary from "../components/Summary";
+import Hotels from "../components/Hotels";
 
 function Home() {
   const [combinedData, setCombinedData] = useState(null);
@@ -40,10 +41,10 @@ function Home() {
               <Summary data={combinedData} />
             </div>
 
-            {/* Future components can be added in similar cards */}
-            {/* <Currency data={combinedData.currency} />
-            <Hotels data={combinedData.hotels} />
-            <Places data={combinedData.places} /> */}
+            <div style={{ backgroundColor: 'white', padding: '20px', borderRadius: '8px', marginBottom: '20px', boxShadow: '0 2px 8px rgba(0,0,0,0.1)' }}>
+              <Hotels data={combinedData} />
+            </div>
+
           </div>
         )}
       </div>
