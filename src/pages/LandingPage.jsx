@@ -1,6 +1,19 @@
 import React from 'react';
+import { useNavigate } from 'react-router';
+
 
 const LandingPage = () => {
+
+  const navigate = useNavigate();
+
+  const onClickHandler = (route) =>{
+  if (route = "login"){
+    navigate ("/login");
+  }else{
+    navigate("/home);
+  }
+
+  
   const pageStyle = {
     backgroundImage: 'url("https://images.unsplash.com/photo-1504609773096-104ff2c73ba4?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")',
     backgroundSize: 'cover', // Show full image
@@ -42,8 +55,8 @@ const LandingPage = () => {
         Get places of interest, hotels, forecast and more for your trips!
       </p>
       <div>
-        <button style={buttonStyle}> Start Planning </button>
-        <button style={buttonStyle}>Create Account</button>
+        <button onClick = {onClickHandler("other")} style={buttonStyle}> Start Planning </button>
+        <button onClick = {onClickHandler("login")}style={buttonStyle}>Create Account</button>
       
       </div>
       <p style={subtitleStyle}>
