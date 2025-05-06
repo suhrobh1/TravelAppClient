@@ -4,7 +4,7 @@ import Context from '../context/Context';
 
 function Navbar() {
 
-  console.log("token", localStorage.getItem("token");
+  console.log("token", localStorage.getItem("token"));
 
 
   
