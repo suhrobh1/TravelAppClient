@@ -14,7 +14,7 @@ App for finding places of interest, hotels, forecast, and more.
 - Weather Microservice
 - Place of Interest Microservice
 - AI Summary Microservice (NIM LLAMA 3.3)
-- Hotels Microservice
+- Hotels Microservice (INPRG)
 
 ## Instructions
 
