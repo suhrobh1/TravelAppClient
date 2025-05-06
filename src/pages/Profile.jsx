@@ -41,6 +41,29 @@ const Profile = () => {
 
   return (
     <div style={containerStyle}>
+         <div
+        style={{
+          position: "absolute",
+          top: "1px",
+          right: "10px",
+          width: "20px",
+          height: "20px",
+          borderRadius: "50%",
+          backgroundColor: "#007BFF",
+          color: "#fff",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          fontStyle: "italic",
+          fontWeight: "bold",
+          cursor: "pointer",
+          zIndex: 2,
+        }}
+        onMouseEnter={() => setShowTooltip(true)}
+        onMouseLeave={() => setShowTooltip(false)}
+      >
+        i
+      </div>
       <h2 style={sectionTitleStyle}>My Info</h2>
 
       <h3 style={headingStyle}>
