@@ -10,7 +10,7 @@ const LandingPage = () => {
   if (route = "login"){
     navigate ("/login");
   }else{
-    navigate("/home);
+    navigate("/home");
   }
 
   
