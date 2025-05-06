@@ -4,7 +4,7 @@ import Context from '../context/Context';
 
 const Profile = () => {
   const context = useContext(Context);
-
+   const [showTooltip, setShowTooltip] = useState(false);
   const containerStyle = {
     maxWidth: '500px',
     margin: '50px auto',
