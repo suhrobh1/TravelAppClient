@@ -50,7 +50,7 @@ const SignUp = () => {
 
   return (
     <div style={{backgroundColor: "",  maxWidth: '400px', margin: '0 auto', textAlign: 'center' , padding: "5px" }}>
-      <button
+      {/* <button
         onClick={handleGoogleSignup}
         style={{ width: '75%', padding: '10px', marginBottom: '10px', backgroundColor: '#DB4437', color: '#fff', border: 'none', borderRadius: '4px' }}
       >
@@ -62,7 +62,7 @@ const SignUp = () => {
         style={{ width: '75%', padding: '10px', marginBottom: '20px', backgroundColor: '#333', color: '#fff', border: 'none', borderRadius: '4px' }}
       >
         Sign up with GitHub
-      </button>
+      </button> */}
 
       <form onSubmit={handleSubmit}>
         <input
