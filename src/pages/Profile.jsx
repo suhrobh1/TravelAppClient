@@ -41,7 +41,19 @@ const Profile = () => {
 
   return (
     <div style={containerStyle}>
-         <div
+    
+      <h2 style={sectionTitleStyle}>My Info</h2>
+      
+      <h3 style={headingStyle}>
+        <span style={{ fontWeight: 'bold' }}>First Name:</span> {context.user.user.firstName}
+      </h3>
+      <h3 style={headingStyle}>
+        <span style={{ fontWeight: 'bold' }}>Last Name:</span> {context.user.user.lastName}
+      </h3>
+      <h3 style={headingStyle}>
+        <span style={{ fontWeight: 'bold' }}>Email:</span> {context.user.user.email}
+      </h3>
+           <div
         style={{
           position: "absolute",
           top: "1px",
@@ -98,18 +110,6 @@ const Profile = () => {
           />
         </div>
       )}
-      <h2 style={sectionTitleStyle}>My Info</h2>
-
-      <h3 style={headingStyle}>
-        <span style={{ fontWeight: 'bold' }}>First Name:</span> {context.user.user.firstName}
-      </h3>
-      <h3 style={headingStyle}>
-        <span style={{ fontWeight: 'bold' }}>Last Name:</span> {context.user.user.lastName}
-      </h3>
-      <h3 style={headingStyle}>
-        <span style={{ fontWeight: 'bold' }}>Email:</span> {context.user.user.email}
-      </h3>
-
       <Link to="/edit-profile" style={buttonStyle}>Edit</Link>
     </div>
   );
