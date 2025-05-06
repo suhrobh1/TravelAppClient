@@ -25,12 +25,9 @@ const LandingPage = () => {
     textShadow: '2px 2px 4px rgba(0,0,0,0.6)'
   };
 
-  //   const buttonStyle = {
-  //   fontSize: '3rem',
-  //   fontWeight: 'bold',
-  //   marginBottom: '10px',
-  //   textShadow: '2px 2px 4px rgba(0,0,0,0.6)'
-  // };
+    const buttonStyle = {
+   margin: '30px 10 px'
+  };
 
   const subtitleStyle = {
     fontSize: '1.2rem',
@@ -45,8 +42,8 @@ const LandingPage = () => {
         Get places of interest, hotels, forecast and more for your trips!
       </p>
       <div>
-        <button> Start Planning </button>
-        <button>Create Account</button>
+        <button style={buttonStyle}> Start Planning </button>
+        <button style={buttonStyle}>Create Account</button>
       
       </div>
       <p style={subtitleStyle}>
