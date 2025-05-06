@@ -1,0 +1,62 @@
+import React, { useContext } from 'react';
+import { Link } from 'react-router'; // Replace with 'react-router-dom' if using in browser
+import Context from '../context/Context';
+
+const Profile = () => {
+  const context = useContext(Context);
+
+  const containerStyle = {
+    maxWidth: '500px',
+    margin: '50px auto',
+    padding: '30px',
+    border: '1px solid #ccc',
+    borderRadius: '8px',
+    backgroundColor: '#f9f9f9',
+    textAlign: 'left',
+    fontFamily: 'Arial, sans-serif'
+  };
+
+  const headingStyle = {
+    marginBottom: '15px',
+    color: '#333'
+  };
+
+  const sectionTitleStyle = {
+    textAlign: 'center',
+    marginBottom: '25px',
+    color: '#222'
+  };
+
+  const buttonStyle = {
+    marginTop: '20px',
+    padding: '10px 20px',
+    backgroundColor: '#007bff',
+    color: '#fff',
+    border: 'none',
+    borderRadius: '4px',
+    cursor: 'pointer',
+    textDecoration: 'none',
+    display: 'inline-block'
+  };
+
+  return (
+    <div style={containerStyle}>
+      <h2 style={sectionTitleStyle}>My Info</h2>
+
+      <h3 style={headingStyle}>
+        <span style={{ fontWeight: 'bold' }}>First Name:</span> {context.user.user.firstName}
+      </h3>
+      <h3 style={headingStyle}>
+        <span style={{ fontWeight: 'bold' }}>Last Name:</span> {context.user.user.lastName}
+      </h3>
+      <h3 style={headingStyle}>
+        <span style={{ fontWeight: 'bold' }}>Email:</span> {context.user.user.email}
+      </h3>
+
+      <Link to="/edit-profile" style={buttonStyle}>Edit</Link>
+    </div>
+  );
+};
+
+export default Profile;
+
