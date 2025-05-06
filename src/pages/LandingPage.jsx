@@ -57,7 +57,7 @@ const LandingPage = () => {
         Get places of interest, hotels, forecast and more for your trips!
       </p>
       <div>
-        <button onClick={() => onClickHandler("start")} style={buttonStyle}> Start Planning </button>
+        <button onClick={() => onClickHandler("start")} style={buttonStyle}> Travel Planner </button>
         <button onClick={() => onClickHandler("login")} style={buttonStyle}>Create Account</button>
       
       </div>
