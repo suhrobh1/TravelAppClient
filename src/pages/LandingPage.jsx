@@ -8,8 +8,10 @@ const LandingPage = () => {
 
   const onClickHandler = (route) =>{
   if (route = "login"){
+    console.log("in login route");
     navigate ("/login");
   }else{
+    console.log("in else route");
     navigate("/home");
   }
   }
