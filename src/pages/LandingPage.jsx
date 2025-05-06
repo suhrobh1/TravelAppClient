@@ -7,7 +7,7 @@ const LandingPage = () => {
   const navigate = useNavigate();
 
   const onClickHandler = (route) =>{
-  if (route = "login"){
+  if (route == "login"){
     console.log("in login route",route);
     navigate ("/login");
   }else{
