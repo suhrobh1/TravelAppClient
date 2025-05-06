@@ -7,7 +7,7 @@ const LandingPage = () => {
     backgroundPosition: 'center',
     backgroundRepeat: 'no-repeat',
     height: '100vh',
-    width: '100%',
+    width: '100vh',
     color: '#fff',
     display: 'flex',
     flexDirection: 'column',
