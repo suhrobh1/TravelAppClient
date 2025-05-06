@@ -39,7 +39,7 @@ const LandingPage = () => {
   };
 
     const buttonStyle = {
-   margin: '30px 10 px'
+   margin: '30px 10px'
   };
 
   const subtitleStyle = {
