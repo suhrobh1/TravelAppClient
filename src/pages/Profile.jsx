@@ -4,7 +4,8 @@ import Context from '../context/Context';
 
 const Profile = () => {
   const context = useContext(Context);
-   const [showTooltip, setShowTooltip] = useState(false);
+  const [showTooltip, setShowTooltip] = useState(false);
+  
   const containerStyle = {
     maxWidth: '500px',
     margin: '50px auto',
@@ -13,7 +14,8 @@ const Profile = () => {
     borderRadius: '8px',
     backgroundColor: '#f9f9f9',
     textAlign: 'left',
-    fontFamily: 'Arial, sans-serif'
+    fontFamily: 'Arial, sans-serif',
+    position: 'relative' // Added position relative
   };
 
   const headingStyle = {
@@ -41,7 +43,6 @@ const Profile = () => {
 
   return (
     <div style={containerStyle}>
-    
       <h2 style={sectionTitleStyle}>My Info</h2>
       
       <h3 style={headingStyle}>
@@ -53,7 +54,8 @@ const Profile = () => {
       <h3 style={headingStyle}>
         <span style={{ fontWeight: 'bold' }}>Email:</span> {context.user.user.email}
       </h3>
-           <div
+      
+      <div
         style={{
           position: "absolute",
           top: "1px",
@@ -71,12 +73,19 @@ const Profile = () => {
           cursor: "pointer",
           zIndex: 2,
         }}
-        onMouseEnter={() => setShowTooltip(true)}
-        onMouseLeave={() => setShowTooltip(false)}
+        onMouseEnter={() => {
+          console.log("Mouse entered"); // Debugging log
+          setShowTooltip(true);
+        }}
+        onMouseLeave={() => {
+          console.log("Mouse left"); // Debugging log
+          setShowTooltip(false);
+        }}
       >
         i
       </div>
-       {showTooltip && (
+      
+      {showTooltip && (
         <div
           style={{
             position: "absolute",
@@ -110,10 +119,10 @@ const Profile = () => {
           />
         </div>
       )}
+      
       <Link to="/edit-profile" style={buttonStyle}>Edit</Link>
     </div>
   );
 };
 
 export default Profile;
-
