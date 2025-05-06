@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router'; // Replace with 'react-router-dom' if using in browser
 import Context from '../context/Context';
 
@@ -64,6 +64,40 @@ const Profile = () => {
       >
         i
       </div>
+       {showTooltip && (
+        <div
+          style={{
+            position: "absolute",
+            bottom: "150px",
+            right: "4px",
+            backgroundColor: "green",
+            color: "black",
+            padding: "10px",
+            borderRadius: "10px",
+            maxWidth: "220px",
+            fontSize: "13px",
+            zIndex: 1,
+            textAlign: "center",
+            boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.2)",
+            whiteSpace: "normal",
+          }}
+        >
+          Click "Edit" button in order to change your name, last name, or email.
+          <div
+            style={{
+              content: '""',
+              position: "absolute",
+              top: "-10px",
+              right: "10px",
+              width: 0,
+              height: 0,
+              borderLeft: "6px solid transparent",
+              borderRight: "6px solid transparent",
+              borderBottom: "10px solid green",
+            }}
+          />
+        </div>
+      )}
       <h2 style={sectionTitleStyle}>My Info</h2>
 
       <h3 style={headingStyle}>
