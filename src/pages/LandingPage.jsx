@@ -25,6 +25,13 @@ const LandingPage = () => {
     textShadow: '2px 2px 4px rgba(0,0,0,0.6)'
   };
 
+  //   const buttonStyle = {
+  //   fontSize: '3rem',
+  //   fontWeight: 'bold',
+  //   marginBottom: '10px',
+  //   textShadow: '2px 2px 4px rgba(0,0,0,0.6)'
+  // };
+
   const subtitleStyle = {
     fontSize: '1.2rem',
     fontStyle: 'italic',
@@ -35,7 +42,15 @@ const LandingPage = () => {
     <div style={pageStyle}>
       <h1 style={titleStyle}>Welcome to TravelPlanner</h1>
       <p style={subtitleStyle}>
-        Place where you can find places of interest, hotels, and more!
+        Get places of interest, hotels, forecast and more for your trips!
+      </p>
+      <div>
+        <button> Start Planning </button>
+        <button>Create Account</button>
+      
+      </div>
+      <p style={subtitleStyle}>
+        Creating an acoount allows you to save your trip information.
       </p>
     </div>
   );
