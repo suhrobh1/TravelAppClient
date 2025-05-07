@@ -3,20 +3,13 @@ import axios from "axios";
 import { useNavigate } from 'react-router';
 import Context from '../context/Context';
 
-
-
-
 const SignIn = () => {
-
   const context = useContext(Context);
   const navigate = useNavigate();
 
   const [form, setForm] = useState({
-    firstName: '',
-    lastName: '',
     email: '',
-    password: '',
-    confirmPassword: ''
+    password: ''
   });
 
   const handleChange = (e) => {
@@ -26,53 +19,27 @@ const SignIn = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    
     try {
       const res = await axios.post("https://travelappserver-production.up.railway.app/api/auth/login", { form });
+
+      // Save token and user to localStorage
       localStorage.setItem("token", res.data.token);
-      alert("Login successful");
+      localStorage.setItem("user", JSON.stringify(res.data)); // persist user info
+
       context.setUser(res.data);
       context.setLoggedIn(true);
 
+      alert("Login successful");
       console.log("res from login: ", res);
-      navigate("/profile")
-
+      navigate("/profile");
     } catch (err) {
-        alert("Signin failed !");
-        console.log("Error: ", err)
+      alert("Signin failed!");
+      console.log("Error: ", err);
     }
-    
-
-
-
-  };
-
-  const handleGoogleSignin = () => {
-    console.log("Google sign-in clicked");
-    // Add Google OAuth logic
-  };
-
-  const handleGithubSignin = () => {
-    console.log("GitHub sign-in clicked");
-    // Add GitHub OAuth logic
   };
 
   return (
-    <div style={{backgroundColor: "",  maxWidth: '400px', margin: '0 auto', textAlign: 'center' , padding: "5px" }}>
-      {/* <button
-        onClick={handleGoogleSignin}
-        style={{ width: '75%', padding: '10px', marginBottom: '10px', backgroundColor: '#DB4437', color: '#fff', border: 'none', borderRadius: '4px' }}
-      >
-        Sign in with Google
-      </button>
-
-      <button
-        onClick={handleGithubSignin}
-        style={{ width: '75%', padding: '10px', marginBottom: '20px', backgroundColor: '#333', color: '#fff', border: 'none', borderRadius: '4px' }}
-      >
-        Sign in with GitHub
-      </button> */}
-
+    <div style={{ maxWidth: '400px', margin: '0 auto', textAlign: 'center', padding: "5px" }}>
       <form onSubmit={handleSubmit}>
         <input
           type="email"
@@ -92,7 +59,6 @@ const SignIn = () => {
           required
           style={{ width: '75%', padding: '8px', marginBottom: '10px', borderRadius: '4px' }}
         />
-
         <button
           type="submit"
           style={{ width: '75%', padding: '10px', backgroundColor: '#007BFF', color: '#fff', border: 'none', borderRadius: '4px' }}

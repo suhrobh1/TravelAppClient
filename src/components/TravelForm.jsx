@@ -64,8 +64,8 @@ function TravelForm({ onDataFetch, submitted, setSubmitted }) {
     }
 
     try {
-      //const response = await fetch(`http://localhost:3001/api/get-trip`, {
-      const response = await fetch(`https://travelappserver-production.up.railway.app/api/get-trip`, {
+      const response = await fetch(`http://localhost:3001/api/get-trip`, {
+      //const response = await fetch(`https://travelappserver-production.up.railway.app/api/get-trip`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -254,7 +254,7 @@ function TravelForm({ onDataFetch, submitted, setSubmitted }) {
             />
           </div>
         </div>
-
+         <h5 style={{color: "red"}}>Please note that using Latitude and Longitude based search might not be as accurate. </h5>       
         {/* Date Input Section */}
         <div
           style={{

@@ -4,18 +4,38 @@ import Context from '../context/Context';
 
 function Navbar() {
 
-  console.log("token", localStorage.getItem("token"));
+  const context = useContext(Context);
+
+
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    const storedUser = localStorage.getItem("user");
+
+    if (token && storedUser) {
+      try {
+        const userData = JSON.parse(storedUser);
+        context.setUser(userData); // not userData.user — it's already user
+        context.setLoggedIn(true);
+        console.log("User loaded from localStorage:", userData);
+      } catch (err) {
+        console.error("Failed to parse user from localStorage:", err);
+      }
+    }
+  }, []);
 
 
   
 
-  const context = useContext(Context);
+  
   let firstName = "";
   console.log("In Navbar", context)
   // console.log("In Navbar, firstName ", context.user.user.firstName)
   
   if (context.user.user){
+    console.log("context in if stem",context)
    firstName =  context.user.user.firstName;
+
   }
 
 

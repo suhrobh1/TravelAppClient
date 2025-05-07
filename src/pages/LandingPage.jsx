@@ -47,7 +47,15 @@ const LandingPage = () => {
   const subtitleStyle = {
     fontSize: '1.2rem',
     fontStyle: 'italic',
-    textShadow: '1px 1px 2px rgba(0,0,0,0.5)'
+    textShadow: '1px 1px 2px rgba(0,0,0,0.5)',
+    
+  };
+  const subtitleStyle1 = {
+    marginTop:"100px",
+    fontSize: '1.2rem',
+    fontStyle: 'italic',
+    textShadow: '1px 1px 2px rgba(0,0,0,0.5)',
+    color:"yellow"
   };
 
   return (
@@ -61,8 +69,8 @@ const LandingPage = () => {
         <button onClick={() => onClickHandler("login")} style={buttonStyle}>Create Account</button>
       
       </div>
-      <p style={subtitleStyle}>
-        Creating an acoount allows you to save your trip information.
+      <p style={subtitleStyle1}>
+        Creating an account allows you to save your trip information.
       </p>
     </div>
   );
