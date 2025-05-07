@@ -1,21 +1,26 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { Link } from 'react-router'; // Replace with 'react-router-dom' if using in browser
-import Context from '../context/Context';
+// import Context from '../context/Context';
+import { UserContext } from '../utils/context';
 
 const Profile = () => {
-  const context = useContext(Context);
+  //const context = useContext(Context);
+  const context = useContext(UserContext);
   const [showTooltip, setShowTooltip] = useState(false);
   const [showDeleteConfirm, setShowDeleteConfirm] = useState(false); // New state
 
+ 
 
   useEffect(() => {
+      console.log("Bam")
       const token = localStorage.getItem("token");
       const storedUser = localStorage.getItem("user");
   
       if (token && storedUser) {
         try {
           const userData = JSON.parse(storedUser);
-          context.setUser(userData); // not userData.user — it's already user
+          context.setUser(userData);   
+          console.log("context", context)
           context.setLoggedIn(true);
           console.log("User loaded from localStorage:", userData);
         } catch (err) {
@@ -23,6 +28,23 @@ const Profile = () => {
         }
       }
     }, []);
+
+
+    let firstName = "";
+    let lastName = "";
+    let email = "";
+    console.log("in Profile", context)
+    // console.log("In Navbar, firstName ", context.user.user.firstName)
+    
+    if (context.user.user){
+      console.log("context in if stem",context)
+     firstName =  context.user.user.firstName;
+     lastName =  context.user.user.lastName;
+     email =  context.user.user.email;
+
+     console.log("first name in if statement", firstName) 
+  
+    }
 
 
   const containerStyle = {
@@ -93,13 +115,13 @@ const Profile = () => {
       <h2 style={sectionTitleStyle}>My Info</h2>
 
       <h3 style={headingStyle}>
-        <span style={{ fontWeight: 'bold' }}>First Name:</span> {context.user.user.firstName}
+        <span style={{ fontWeight: 'bold' }}>First Name:</span> {firstName}
       </h3>
       <h3 style={headingStyle}>
-        <span style={{ fontWeight: 'bold' }}>Last Name:</span> {context.user.user.lastName}
+        <span style={{ fontWeight: 'bold' }}>Last Name:</span> {lastName}
       </h3>
       <h3 style={headingStyle}>
-        <span style={{ fontWeight: 'bold' }}>Email:</span> {context.user.user.email}
+        <span style={{ fontWeight: 'bold' }}>Email:</span> {email}
       </h3>
 
       <div

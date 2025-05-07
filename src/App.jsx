@@ -5,10 +5,12 @@ import Home from "./pages/Home";
 import LandingPage from "./pages/LandingPage";
 import Navbar from "./components/Navbar";
 import SignUpPage from "./pages/LoginPage";
+// import Context from "./context/Context"; 
 import Context from "./context/Context";
 import LoginPage from "./pages/LoginPage";
 import Profile from "./pages/Profile";
 import EditProfile from "./pages/EditProfile";
+import { UserContext } from "./utils/context";
 
 
 function App() {
@@ -28,7 +30,7 @@ function App() {
 
   return (
     <>
-    <Context.Provider value={{ user, setUser, loggedIn, setLoggedIn }}>
+    <UserContext.Provider value={{ user, setUser, loggedIn, setLoggedIn }}>
       <Navbar/>
       <Routes>
         <Route path="/home" element={<Home />} />
@@ -38,7 +40,7 @@ function App() {
         <Route path="/edit-profile" element={<EditProfile/>}/>
         
       </Routes>
-    </Context.Provider> 
+    </UserContext.Provider> 
     </>
   );
 }

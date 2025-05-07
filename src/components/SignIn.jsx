@@ -1,10 +1,12 @@
 import React, { useContext, useState } from 'react';
 import axios from "axios";
 import { useNavigate } from 'react-router';
-import Context from '../context/Context';
+// import Context from '../context/Context';
+import { UserContext } from '../utils/context';
 
 const SignIn = () => {
-  const context = useContext(Context);
+  // const context = useContext(Context);
+  const context = useContext(UserContext);
   const navigate = useNavigate();
 
   const [form, setForm] = useState({
