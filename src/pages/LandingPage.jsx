@@ -22,7 +22,7 @@ const LandingPage = () => {
     backgroundPosition: 'center',
     backgroundRepeat: 'no-repeat',
     height: '100vh',
-    width: '100vh',
+    width: '130vh',
     color: '#fff',
     display: 'flex',
     flexDirection: 'column',
@@ -55,11 +55,17 @@ const LandingPage = () => {
     fontSize: '1.2rem',
     fontStyle: 'italic',
     textShadow: '1px 1px 2px rgba(0,0,0,0.5)',
-    color:"yellow"
+    color:"gold"
   };
+
+  const banner ={
+     background: 'rgba(0, 0, 0, 0.5)',
+     width:"134vh"
+  }
 
   return (
     <div style={pageStyle}>
+      <div style={banner}>
       <h1 style={titleStyle}>Welcome to TravelPlanner</h1>
       <p style={subtitleStyle}>
         Get places of interest, hotels, forecast and more for your trips!
@@ -72,6 +78,7 @@ const LandingPage = () => {
       <p style={subtitleStyle1}>
         Creating an account allows you to save your trip information.
       </p>
+      </div>
     </div>
   );
 };
