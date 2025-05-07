@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { Link } from 'react-router'; // Replace with 'react-router-dom' if using in browser
 import Context from '../context/Context';
 
@@ -6,6 +6,24 @@ const Profile = () => {
   const context = useContext(Context);
   const [showTooltip, setShowTooltip] = useState(false);
   const [showDeleteConfirm, setShowDeleteConfirm] = useState(false); // New state
+
+
+  useEffect(() => {
+      const token = localStorage.getItem("token");
+      const storedUser = localStorage.getItem("user");
+  
+      if (token && storedUser) {
+        try {
+          const userData = JSON.parse(storedUser);
+          context.setUser(userData); // not userData.user — it's already user
+          context.setLoggedIn(true);
+          console.log("User loaded from localStorage:", userData);
+        } catch (err) {
+          console.error("Failed to parse user from localStorage:", err);
+        }
+      }
+    }, []);
+
 
   const containerStyle = {
     maxWidth: '500px',
