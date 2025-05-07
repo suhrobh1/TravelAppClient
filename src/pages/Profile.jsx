@@ -8,7 +8,7 @@ const Profile = () => {
   const context = useContext(UserContext);
   const [showTooltip, setShowTooltip] = useState(false);
   const [showDeleteConfirm, setShowDeleteConfirm] = useState(false); // New state
-
+  
  
 
   useEffect(() => {
@@ -19,7 +19,10 @@ const Profile = () => {
       if (token && storedUser) {
         try {
           const userData = JSON.parse(storedUser);
-          context.setUser(userData);   
+          firstName =  context.user.user.firstName;
+          lastName =  context.user.user.lastName;
+          email =  context.user.user.email;
+          // context.setUser(userData);  
           console.log("context", context)
           context.setLoggedIn(true);
           console.log("User loaded from localStorage:", userData);
