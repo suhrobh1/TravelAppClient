@@ -1,9 +1,9 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { useNavigate } from 'react-router'; // if using react-router-dom
-import Context from '../context/Context';
+import { UserContext } from '../utils/context';
 
 const EditProfile = () => {
-  const { user, setUser } = useContext(Context);
+  const { user, setUser } = useContext(UserContext);
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
