@@ -11,6 +11,7 @@ import LoginPage from "./pages/LoginPage";
 import Profile from "./pages/Profile";
 import EditProfile from "./pages/EditProfile";
 import { UserContext } from "./utils/context";
+import History from "./pages/History";
 
 
 function App() {
@@ -38,7 +39,7 @@ function App() {
         <Route path ="/profile" element ={<Profile/>}/>
         <Route path="/login" element={<LoginPage/>}/>
         <Route path="/edit-profile" element={<EditProfile/>}/>
-        
+        <Route path ="/history" element={<History/>}/>
       </Routes>
     </UserContext.Provider> 
     </>

@@ -68,6 +68,7 @@ function Navbar() {
         <h2 style={{ margin: 0 }}>Travel Planner</h2>
         <nav>
           <Link to={"/"} style={{ margin: "0 10px", padding:"5px 5px 5px 5px" }}>Home</Link>
+          {firstName ? <Link to={"/history"} style={{ margin: "0 10px", padding:"5px 5px 5px 5px" }}>History</Link> : <span></span>}
           {firstName ? <Link to={"/profile"} style={{ margin: "0 10px", padding:"5px 5px 5px 5px" }}>Profile</Link> : <span></span>}
           <Link to={"/home"} style={{ margin: "0 10px", padding:"5px 5px 5px 5px" }}>Travel Planner</Link>
           {firstName ? <Link onClick={Logout} style={{ margin: "0 10px", padding:"5px 5px 5px 5px", color: "red", fontWeight:"bold" }} > Logout</Link> : <Link to={"/login"} style={{ margin: "0 10px", padding:"5px 30px 5px 5px" }}> Login</Link>  }
