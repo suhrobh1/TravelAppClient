@@ -1,14 +1,31 @@
 import React, { useEffect, useState } from 'react';
+import { useContext } from 'react';
+import { UserContext } from '../utils/context';
 
 const History = () => {
   const [plans, setPlans] = useState([]);
+  const context = useContext(UserContext);
+
 
   useEffect(() => {
+
+    const storedUser = JSON.parse(localStorage.getItem("user"));
+    const storedUserID = storedUser.user._id;
+    // console.log("storedUser in History", storedUser.user._id);
+
+   
     async function fetchPlans() {
       try {
       
-        const res = await fetch(`https://travelappserver-production.up.railway.app/api/travel-plans`);
-       // const res = await fetch("http://localhost:3001/api/travel-plans");
+        const res = await fetch(`https://travelappserver-production.up.railway.app/api/travel-plans` , { 
+        //const res = await fetch("http://localhost:3001/api/travel-plans", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({storedUserID}),
+        });
+
         const data = await res.json();
         setPlans(data);
       } catch (err) {

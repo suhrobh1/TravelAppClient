@@ -1,12 +1,13 @@
 import React, { useContext, useEffect } from 'react'
 import { Link } from 'react-router'
-// import Context from '../context/Context';
+import Context from '../context/Context';
 import { UserContext } from '../utils/context';
 
 function Navbar() {
 
   // const context = useContext(Context);
   const context = useContext(UserContext);
+  const userContext = useContext(Context);
 
 
 

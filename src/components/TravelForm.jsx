@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 
+//Just adding this note, get test
+
 function TravelForm({ onDataFetch, submitted, setSubmitted }) {
   const [city, setCity] = useState("");
   const [fromDate, setFromDate] = useState("");
@@ -64,13 +66,18 @@ function TravelForm({ onDataFetch, submitted, setSubmitted }) {
     }
 
     try {
+      const storedUser = JSON.parse(localStorage.getItem("user"));
+      const storedUserID = storedUser.user._id;
+      // console.log("storedUser in TravelForm", storedUser.user._id);
+
+
       //const response = await fetch(`http://localhost:3001/api/get-trip`, {
       const response = await fetch(`https://travelappserver-production.up.railway.app/api/get-trip`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ latitude, longitude, fromDate, toDate, city }),
+        body: JSON.stringify({ latitude, longitude, fromDate, toDate, city, storedUserID }),
       });
 
       if (!response.ok) {
